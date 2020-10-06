@@ -12,26 +12,40 @@ import TablesEventsId from './components/views/TablesEventsId/TablesEventsId';
 import TablesEventsNew from './components/views/TablesEventsNew/TablesEventsNew';
 import WaiterOrderNew from './components/views/WaiterOrderNew/WaiterOrderNew';
 import WaiterOrderId from './components/views/WaiterOrderId/WaiterOrderId';
+import { StylesProvider } from '@material-ui/core/styles';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#2B4C6F',
+    },
+  },
+});
 
 function App() {
   return (
 
     <BrowserRouter>
-      <MainLayout>
-        <Switch>
-          <Route exact path={`${process.env.PUBLIC_URL}/`} component={Homepage} />
-          <Route exact path={`${process.env.PUBLIC_URL}/tables`} component={Tables} />
-          <Route exact path={`${process.env.PUBLIC_URL}/tables/booking/table/:id`} component={TablesBookingId} />
-          <Route exact path={`${process.env.PUBLIC_URL}/tables/booking/new`} component={TablesBookingNew} />
-          <Route exact path={`${process.env.PUBLIC_URL}/tables/events/event/:id`} component={TablesEventsId} />
-          <Route exact path={`${process.env.PUBLIC_URL}/tables/events/new`} component={TablesEventsNew} />
-          <Route exact path={`${process.env.PUBLIC_URL}/waiter/orders/new`} component={WaiterOrderNew} />
-          <Route exact path={`${process.env.PUBLIC_URL}/waiter/orders/order/:id`} component={WaiterOrderId} />
-          <Route exact path={`${process.env.PUBLIC_URL}/waiter`} component={Waiter} />
-          <Route exact path={`${process.env.PUBLIC_URL}/kitchen`} component={Kitchen} />
-          <Route exact path={process.env.PUBLIC_URL + '/login'} component={Login} />
-        </Switch>
-      </MainLayout>
+      <StylesProvider injectFirst>
+        <ThemeProvider theme={theme}>
+          <MainLayout>
+            <Switch>
+              <Route exact path={`${process.env.PUBLIC_URL}/`} component={Homepage} />
+              <Route exact path={`${process.env.PUBLIC_URL}/tables`} component={Tables} />
+              <Route exact path={`${process.env.PUBLIC_URL}/tables/booking/table/:id`} component={TablesBookingId} />
+              <Route exact path={`${process.env.PUBLIC_URL}/tables/booking/new`} component={TablesBookingNew} />
+              <Route exact path={`${process.env.PUBLIC_URL}/tables/events/event/:id`} component={TablesEventsId} />
+              <Route exact path={`${process.env.PUBLIC_URL}/tables/events/new`} component={TablesEventsNew} />
+              <Route exact path={`${process.env.PUBLIC_URL}/waiter/orders/new`} component={WaiterOrderNew} />
+              <Route exact path={`${process.env.PUBLIC_URL}/waiter/orders/order/:id`} component={WaiterOrderId} />
+              <Route exact path={`${process.env.PUBLIC_URL}/waiter`} component={Waiter} />
+              <Route exact path={`${process.env.PUBLIC_URL}/kitchen`} component={Kitchen} />
+              <Route exact path={process.env.PUBLIC_URL + '/login'} component={Login} />
+            </Switch>
+          </MainLayout>
+        </ThemeProvider>
+      </StylesProvider>
     </BrowserRouter>
 
   );
