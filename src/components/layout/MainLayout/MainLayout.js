@@ -4,7 +4,7 @@ import PageNav from '../PageNav/PageNav';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Container from '@material-ui/core/Container';
-
+import styles from './MainLayout.module.scss';
 const MainLayout = (props) => (
   <div>
     <AppBar>
@@ -15,7 +15,7 @@ const MainLayout = (props) => (
       </Container>
     </AppBar>
     <Container maxWidth='lg'>
-      <Toolbar />
+      <Toolbar className={styles.ToolbarSpacing} />
       {props.children}
     </Container>
   </div>

@@ -45,7 +45,7 @@ const Tables = () => {
         />
       </form>
 
-      <Button component={Link} to={`${process.env.PUBLIC_URL}/tables/booking/new`} color="primary" variant="contained">Add Booking</Button>
+      <Button component={Link} to={`${process.env.PUBLIC_URL}/tables/booking/new`} color="primary" variant="contained" className={styles.button}>Add Booking</Button>
 
       <Paper className={styles.component}>
         <Table>
@@ -98,56 +98,58 @@ const Tables = () => {
         </Table>
       </Paper>
 
-      <Button component={Link} to={`${process.env.PUBLIC_URL}/tables/booking/new`} color="primary" variant="contained">Add Event</Button>
+      <Button component={Link} to={`${process.env.PUBLIC_URL}/tables/booking/new`} color="primary" variant="contained" className={styles.button}>Add Event</Button>
 
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell>Time</TableCell>
-            <TableCell>Table 1</TableCell>
-            <TableCell>Table 2</TableCell>
-            <TableCell>Table 3</TableCell>
-            <TableCell>Table 4</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {events.map(row => (
-            <TableRow key={row.hour}>
-              <TableCell component="th" scope="row">
-                {row.hour}
-              </TableCell>
-              <TableCell>
-                {row.table1 && (
-                  <Link className={styles.bookingLink} to={`${process.env.PUBLIC_URL}/tables/events/event/${row.table1}`}>
-                    {row.table1}
-                  </Link>
-                )}
-              </TableCell>
-              <TableCell>
-                {row.table2 && (
-                  <Link className={styles.bookingLink} to={`${process.env.PUBLIC_URL}/tables/events/event/${row.table2}`}>
-                    {row.table2}
-                  </Link>
-                )}
-              </TableCell>
-              <TableCell>
-                {row.table3 && (
-                  <Link className={styles.bookingLink} to={`${process.env.PUBLIC_URL}/tables/events/event/${row.table3}`}>
-                    {row.table3}
-                  </Link>
-                )}
-              </TableCell>
-              <TableCell>
-                {row.table4 && (
-                  <Link className={styles.bookingLink} to={`${process.env.PUBLIC_URL}/tables/events/event/${row.table4}`}>
-                    {row.table4}
-                  </Link>
-                )}
-              </TableCell>
+      <Paper className={styles.component}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>Time</TableCell>
+              <TableCell>Table 1</TableCell>
+              <TableCell>Table 2</TableCell>
+              <TableCell>Table 3</TableCell>
+              <TableCell>Table 4</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+          </TableHead>
+          <TableBody>
+            {events.map(row => (
+              <TableRow key={row.hour}>
+                <TableCell component="th" scope="row">
+                  {row.hour}
+                </TableCell>
+                <TableCell>
+                  {row.table1 && (
+                    <Link className={styles.bookingLink} to={`${process.env.PUBLIC_URL}/tables/events/event/${row.table1}`}>
+                      {row.table1}
+                    </Link>
+                  )}
+                </TableCell>
+                <TableCell>
+                  {row.table2 && (
+                    <Link className={styles.bookingLink} to={`${process.env.PUBLIC_URL}/tables/events/event/${row.table2}`}>
+                      {row.table2}
+                    </Link>
+                  )}
+                </TableCell>
+                <TableCell>
+                  {row.table3 && (
+                    <Link className={styles.bookingLink} to={`${process.env.PUBLIC_URL}/tables/events/event/${row.table3}`}>
+                      {row.table3}
+                    </Link>
+                  )}
+                </TableCell>
+                <TableCell>
+                  {row.table4 && (
+                    <Link className={styles.bookingLink} to={`${process.env.PUBLIC_URL}/tables/events/event/${row.table4}`}>
+                      {row.table4}
+                    </Link>
+                  )}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </Paper>
     </Paper>
   );};
 
