@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom';
 class Waiter extends React.Component {
   static propTypes = {
     fetchTables: PropTypes.func,
-    postStatus: PropTypes.func,
+    putStatus: PropTypes.func,
     loading: PropTypes.shape({
       active: PropTypes.bool,
       error: PropTypes.oneOfType([PropTypes.bool,PropTypes.string]),
@@ -26,13 +26,28 @@ class Waiter extends React.Component {
     fetchTables();
   }
 
+  orderHandler(id){
+    switch (id) {
+      case 3:
+        return 123;
+      default:
+        return null;
+      case 4:
+        return 234;
+      case 5:
+        return 345;
+      case 6:
+        return 456;
+    }
+  }
+
   renderActions(status, id){
-    const { postStatus } = this.props;
+    const { putStatus } = this.props;
     switch (status) {
       case 'free':
         return (
           <>
-            <Button onClick={() => postStatus('thinking', id, null)}>thinking</Button>
+            <Button onClick={() => putStatus('thinking', id, this.orderHandler(id))}>thinking</Button>
             <Button component={Link} to={`${process.env.PUBLIC_URL}/tables/booking/new`}>new order</Button>
           </>
         );
@@ -42,19 +57,19 @@ class Waiter extends React.Component {
         );
       case 'ordered':
         return (
-          <Button onClick={() => postStatus('prepared', id, 234)}>prepared</Button>
+          <Button onClick={() => putStatus('prepared', id, this.orderHandler(id))}>prepared</Button>
         );
       case 'prepared':
         return (
-          <Button onClick={() => postStatus('delivered', id, 344)}>delivered</Button>
+          <Button onClick={() => putStatus('delivered', id, this.orderHandler(id))}>delivered</Button>
         );
       case 'delivered':
         return (
-          <Button onClick={() => postStatus('paid', id, 444)}>paid</Button>
+          <Button onClick={() => putStatus('paid', id, this.orderHandler(id))}>paid</Button>
         );
       case 'paid':
         return (
-          <Button onClick={() => postStatus('free', id, null)}>free</Button>
+          <Button onClick={() => putStatus('free', id, this.orderHandler(id))}>free</Button>
         );
       default:
         return null;

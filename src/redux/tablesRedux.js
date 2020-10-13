@@ -35,7 +35,7 @@ export const fetchFromAPI = () => {
       });
   };
 };
-export const PostStatusToAPI = (payload, id, order) => {
+export const PutStatusToAPI = (payload, id, order) => {
   return (dispatch, getState) => {
 
     Axios
