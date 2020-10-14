@@ -35,13 +35,13 @@ export const fetchFromAPI = () => {
       });
   };
 };
-export const PutStatusToAPI = (payload, id, order) => {
+export const putStatusToAPI = (payload, id, row) => {
   return (dispatch, getState) => {
 
     Axios
       .put(`${api.url}/${api.tables}/${id}`, {
         id: id,
-        order: order,  
+        order: row.order,
         status: payload})
       .then(res => {
         dispatch(postStatus(res.data));
